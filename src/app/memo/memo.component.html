@@ -1,0 +1,43 @@
+<br><br><br>
+
+<div class="container">
+
+    ici memo
+
+    <div class="row">
+        <div class="col-sm-4">
+            <div class="">
+                <form #fMemo="ngForm" (ngSubmit)="sendMemo(fMemo.value)">
+                    <div class="form-control">
+                        <input type="text" name="contenue" ngModel="" class="form-control" placeholder="put memo">
+                    </div>
+
+                    <div class="form-control">
+                        <input type="file" name="video" ngModel="" (change)="onFileChanged($event)">
+                    </div>
+
+                    <button class="btn btn-info btn-block">envoyer le memo</button>
+                </form>
+            </div>
+        </div>
+        <div class="col-sm-2">
+
+        </div>
+
+        <div class="col-sm-6">
+           <div *ngFor="let m of memos">
+               <br>
+            <div class="card" >
+                <div class="card-header">
+                    {{ m.contenue }}
+                </div>
+                <div class="card-body" *ngIf="mediaExist(m.video)">
+                   <img width="20%" [src]="chargementMedia( m.video)">
+                </div>
+            </div>
+           </div>
+            <br>
+        </div>
+    </div>
+
+</div>
